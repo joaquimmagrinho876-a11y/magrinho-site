@@ -73,7 +73,7 @@ export default function Home() {
                   Solicitar diagnóstico
                 </a>
                 <a
-                  href="https://wa.me/244975692359"
+                  href="https://wa.me/244921131848"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-7 py-4 text-base font-bold text-gray-900 transition-all hover:border-[#C5A85A]"
@@ -228,7 +228,7 @@ export default function Home() {
             © {new Date().getFullYear()} Magrinho Solutions. Todos os direitos reservados.
           </p>
           <div className="flex flex-wrap gap-6 text-sm text-gray-400">
-            <a href="https://wa.me/244975692359" className="hover:text-[#C5A85A]" target="_blank" rel="noreferrer">
+            <a href="https://wa.me/244921131848" className="hover:text-[#C5A85A]" target="_blank" rel="noreferrer">
               WhatsApp
             </a>
             <a href="#servicos" className="hover:text-[#C5A85A]">
