@@ -1,13 +1,32 @@
 import { Metadata } from "next";
 import "./globals.css";
 
-// Metadados para indexação do Google
+// Metadados atualizados para HR Tech + PONTE_MS
 export const metadata: Metadata = {
-  title: "Magrinho Solutions | Sistemas, automação e gestão digital",
-  description: "Soluções estratégicas em tecnologia, automação e gestão para empresas que querem crescer com mais eficiência e controlo.",
-  keywords: ["Magrinho Solutions", "Joaquim Magrinho", "Automação", "Sistemas", "Gestão digital", "RH digital", "Benguela", "Angola"],
+  title: "Magrinho Solutions | HR Tech - Método PONTE_MS™",
+  description: "HR Tech angolana. Transformamos processos de RH informais em sistemas organizados com o Método PONTE_MS™. Diagnóstico, implementação e automação para empresas.",
+  keywords: [
+    "Magrinho Solutions", 
+    "Joaquim Magrinho", 
+    "HR Tech Angola", 
+    "Recursos Humanos", 
+    "Método PONTE_MS", 
+    "Automação RH", 
+    "Diagnóstico RH", 
+    "Organização de processos",
+    "Benguela", 
+    "Angola"
+  ],
   authors: [{ name: "Joaquim Magrinho" }],
   creator: "Joaquim Magrinho",
+  openGraph: {
+    title: "Magrinho Solutions | HR Tech - Método PONTE_MS™",
+    description: "Transformamos processos de RH em sistemas eficientes. Diagnóstico em 45min + plano de ação em 24h.",
+    url: "https://magrinho-site.vercel.app",
+    siteName: "Magrinho Solutions",
+    locale: "pt_AO",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -25,21 +44,22 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "Magrinho Solutions",
+              "description": "Empresa de HR Tech focada em organizar processos de RH através do Método PONTE_MS™",
               "url": "https://magrinho-site.vercel.app",
               "logo": "https://magrinho-site.vercel.app/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Joaquim Magrinho",
-                "jobTitle": "CEO & Diretor de Arte Digital",
+                "jobTitle": "CEO & Especialista em Processos de RH",
                 "image": "https://magrinho-site.vercel.app/joaquim-magrinho-executive.png",
-                "knowsAbout": ["Recursos Humanos", "Tecnologia da Informação", "Artes Visuais", "Design de Interfaces"]
+                "knowsAbout": ["Recursos Humanos", "Método PONTE_MS", "Automação de Processos", "Gestão de Pessoas", "Tecnologia para RH"]
               },
               "sameAs": [
                 "https://www.linkedin.com/in/joaquims-magrinho",
                 "https://www.facebook.com/profile.php?id=61585934075599",
                 "https://www.facebook.com/share/17k2QRu64j/",
                 "https://www.instagram.com/magrinhosolutions",
-                "https://www.instagram.com/joaquimmagrinho"
+                "https://www.instagram.com/joaquimmagrinho" 
               ]
             }),
           }}

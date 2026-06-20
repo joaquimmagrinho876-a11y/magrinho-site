@@ -1,245 +1,407 @@
-const services = [
-  {
-    title: "Sistemas de gestão",
-    description:
-      "Plataformas internas para controlar processos, colaboradores, tarefas e performance com clareza.",
-  },
-  {
-    title: "Automação inteligente",
-    description:
-      "Fluxos automáticos que eliminam trabalho manual repetitivo e reduzem erros operacionais.",
-  },
-  {
-    title: "RH digital",
-    description:
-      "Ferramentas para recrutamento, onboarding, organização e acompanhamento de equipas com mais eficácia.",
-  },
-];
-
-const benefits = [
-  "Mais velocidade na execução dos processos",
-  "Menos erros e maior controlo operacional",
-  "Decisões mais rápidas com informação organizada",
-  "Escalabilidade sem depender de esforço manual",
-];
-
-const steps = [
-  {
-    number: "01",
-    title: "Diagnóstico",
-    description: "Analisamos o negócio para encontrar gargalos, desperdícios e oportunidades reais.",
-  },
-  {
-    number: "02",
-    title: "Construção",
-    description: "Criamos soluções sob medida, com foco em simplicidade, performance e usabilidade.",
-  },
-  {
-    number: "03",
-    title: "Otimização",
-    description: "Ajustamos continuamente para garantir crescimento, eficiência e controlo no longo prazo.",
-  },
-];
+'use client'
+import { ArrowRight, Shield, Zap, Users, Palette, Check, Menu, X, Mail, MapPin, Linkedin, FileText, Target, Settings, Headphones, Briefcase, Bot, Award, Rocket } from 'lucide-react'
+import Link from 'next/link'
+import { useState } from 'react'
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const whatsappLink = "https://wa.me/244921131848?text=Ol%C3%A1%2C%20quero%20fazer%20o%20Diagn%C3%B3stico%20PONTE_MS%E2%84%A2"
+  
+  const navLinks = [
+    { name: 'Início', href: '#inicio' },
+    { name: 'Sobre Nós', href: '#sobre' },
+    { name: 'Método PONTE_MS™', href: '#metodo' },
+    { name: 'Diagnóstico PONTE_MS™', href: '#diagnostico' },
+    { name: 'Serviços', href: '#servicos' },
+    { name: 'Contactos', href: '#contactos' },
+  ]
+
+  const ponteSteps = [
+    { icon: "🔍", letra: "P", nome: "Perceber", desc: "Analisar e compreender a realidade atual da empresa." },
+    { icon: "📋", letra: "O", nome: "Organizar", desc: "Estruturar processos, documentos e fluxos de trabalho." },
+    { icon: "🧾", letra: "N", nome: "Normalizar", desc: "Criar padrões e procedimentos claros e repetíveis." },
+    { icon: "⚙", letra: "T", nome: "Transformar", desc: "Aplicar melhorias, digitalização e tecnologia." },
+    { icon: "🚀", letra: "E", nome: "Evoluir", desc: "Garantir melhoria contínua e crescimento sustentável." },
+  ]
+
+  const comoFunciona = [
+    { icon: FileText, num: "1", titulo: "Diagnóstico PONTE_MS™", desc: "Identificamos falhas e oportunidades nos processos de RH." },
+    { icon: Target, num: "2", titulo: "Plano de Ação", desc: "Entregamos um roadmap priorizado com ROI estimado." },
+    { icon: Settings, num: "3", titulo: "Implementação", desc: "Executamos a organização e digitalização dos processos." },
+    { icon: Headphones, num: "4", titulo: "Acompanhamento", desc: "Garantimos evolução contínua e suporte." },
+  ]
+
+  const servicos = [
+    { icon: FileText, nome: "Diagnóstico PONTE_MS™", desc: "Avaliação completa da maturidade dos processos de RH." },
+    { icon: Briefcase, nome: "Organização Documental", desc: "Estruturação e normalização de documentos de RH." },
+    { icon: Users, nome: "Recrutamento e Seleção", desc: "Processos organizados de atração e seleção de talentos." },
+    { icon: Zap, nome: "Automação de RH", desc: "Redução de trabalho manual com tecnologia." },
+    { icon: Bot, nome: "Recepcionista Digital", desc: "Atendimento automatizado para RH." },
+    { icon: Award, nome: "Consultoria de RH", desc: "Estratégia e melhoria contínua em gestão de pessoas." },
+  ]
+
+  const autoridade = [
+    { icon: Award, titulo: "Metodologia própria", desc: "Método PONTE_MS™ validado e estruturado." },
+    { icon: Target, titulo: "Foco em resultados", desc: "Cada ação tem impacto mensurável no negócio." },
+    { icon: Zap, titulo: "Integração RH + Tecnologia", desc: "Unimos gestão de pessoas com digitalização." },
+    { icon: Settings, titulo: "Soluções adaptadas", desc: "Personalizamos conforme a realidade empresarial." },
+  ]
+
+  const valores = [
+    "Integridade", "Comprometimento", "Responsabilidade", "Serviço ao Cliente",
+    "Simplicidade", "Organização", "Melhoria Contínua", "Crescimento Sustentável"
+  ]
+
   return (
-    <main className="min-h-screen bg-white text-gray-900">
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(197,168,90,0.16),_transparent_45%),radial-gradient(circle_at_top_right,_rgba(26,115,232,0.12),_transparent_35%)]" />
-
-        <div className="mx-auto max-w-7xl px-6 py-20 sm:py-24 lg:px-8 lg:py-28">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-            <div className="max-w-3xl text-left">
-              <span className="inline-flex items-center rounded-full border border-[#C5A85A]/20 bg-[#C5A85A]/10 px-5 py-2 text-xs font-bold uppercase tracking-[0.25em] text-[#C5A85A]">
+    <main className="bg-white text-slate-900">
+      {/* HEADER */}
+      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-lg border-b border-slate-200">
+        <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 items-center justify-between">
+            <div className="flex items-center">
+              <Link href="/" className="text-xl font-bold tracking-tight">
                 MAGRINHO SOLUTIONS
-              </span>
-
-              <h1 className="mt-8 text-4xl font-black tracking-tight text-black sm:text-5xl lg:text-7xl">
-                Transforme processos em
-                <span className="mt-3 block bg-gradient-to-r from-[#C5A85A] via-black to-[#1A73E8] bg-clip-text text-transparent">
-                  vantagem competitiva
-                </span>
-              </h1>
-
-              <p className="mt-6 text-lg leading-8 text-gray-600 sm:text-xl">
-                Desenvolvemos sistemas, automações e soluções de gestão para empresas que querem crescer com mais organização, velocidade e controlo.
-              </p>
-
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href="#contacto"
-                  className="inline-flex items-center justify-center rounded-xl bg-black px-7 py-4 text-base font-bold text-white transition-all hover:bg-[#1A73E8]"
-                >
-                  Solicitar diagnóstico
-                </a>
-                <a
-                  href="https://wa.me/244921131848"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-7 py-4 text-base font-bold text-gray-900 transition-all hover:border-[#C5A85A]"
-                >
-                  Falar no WhatsApp
-                </a>
-              </div>
-
-              <div className="mt-8 flex flex-wrap gap-4 text-sm text-gray-600">
-                <div className="rounded-full border border-gray-200 bg-white px-4 py-2">+10 projetos entregues</div>
-                <div className="rounded-full border border-gray-200 bg-white px-4 py-2">Foco em resultado real</div>
-                <div className="rounded-full border border-gray-200 bg-white px-4 py-2">Processos claros e escaláveis</div>
-              </div>
+              </Link>
             </div>
-
-            <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)] sm:p-8">
-              <div className="rounded-2xl bg-gray-950 p-6 text-white">
-                <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#C5A85A]">O que entregamos</p>
-                <ul className="mt-5 space-y-3 text-sm text-gray-300">
-                  {benefits.map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#1A73E8]" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <div className="hidden lg:flex lg:gap-x-8">
+              {navLinks.map((link) => (
+                <Link key={link.name} href={link.href} className="text-sm font-semibold leading-6 text-slate-900 hover:text-[#D4AF37]">
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+            <div className="hidden lg:flex">
+              <Link href={whatsappLink} className="rounded-md bg-[#3B82C6] px-4 py-2 text-sm font-semibold text-white hover:bg-[#2563EB]">
+                Fale Connosco
+              </Link>
+            </div>
+            <div className="flex lg:hidden">
+              <button onClick={() => setMenuOpen(!menuOpen)} className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5">
+                {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </button>
             </div>
           </div>
+          {menuOpen && (
+            <div className="lg:hidden py-6 space-y-4">
+              {navLinks.map((link) => (
+                <Link key={link.name} href={link.href} onClick={() => setMenuOpen(false)} className="block text-base font-semibold text-slate-900">
+                  {link.name}
+                </Link>
+              ))}
+              <Link href={whatsappLink} className="block rounded-md bg-[#3B82C6] px-4 py-2 text-center text-sm font-semibold text-white">
+                Fale Connosco
+              </Link>
+            </div>
+          )}
+        </nav>
+      </header>
 
-          <div className="mt-12 grid gap-4 md:grid-cols-3">
-            {[
-              { label: "Tempo recuperado", value: "-60%" },
-              { label: "Eficiência operacional", value: "+3x" },
-              { label: "Disponibilidade", value: "24/7" },
-            ].map((item) => (
-              <div key={item.label} className="rounded-2xl border border-gray-200 bg-white/80 p-5 backdrop-blur">
-                <p className="text-3xl font-black text-black">{item.value}</p>
-                <p className="mt-2 text-sm text-gray-500">{item.label}</p>
+      {/* 1. HOME - HERO */}
+      <section id="inicio" className="relative px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+        <div className="mx-auto max-w-4xl text-center">
+          <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+            Transformamos processos de{' '}
+            <span className="text-[#3B82C6]">RH</span> em{' '}
+            <span className="bg-gradient-to-r from-[#D4AF37] to-[#B8941F] bg-clip-text text-transparent">
+              sistemas eficientes
+            </span>
+            .
+          </h1>
+          <p className="mt-6 text-lg leading-8 text-slate-600 sm:text-xl">
+            Através do Método PONTE_MS™ ajudamos empresas a organizar, normalizar, transformar e evoluir os seus processos de gestão de pessoas.
+          </p>
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-x-6">
+            <Link href="#diagnostico" className="w-full sm:w-auto rounded-md bg-gradient-to-r from-[#D4AF37] to-[#B8941F] px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:opacity-90">
+              Solicitar Diagnóstico PONTE_MS™ <ArrowRight className="inline ml-1 h-4 w-4" />
+            </Link>
+            <Link href={whatsappLink} className="w-full sm:w-auto rounded-md bg-[#3B82C6] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#2563EB]">
+              Falar no WhatsApp
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. COMO FUNCIONA - NOVA */}
+      <section id="como-funciona" className="px-4 py-20 sm:px-6 lg:px-8 bg-slate-50">
+        <div className="mx-auto max-w-7xl">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+              Como Funciona
+            </h2>
+          </div>
+          <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {comoFunciona.map((item) => (
+              <div key={item.num} className="bg-white p-6 rounded-xl border border-slate-200 text-center">
+                <div className="mx-auto w-12 h-12 bg-[#D4AF37]/10 rounded-full flex items-center justify-center mb-4">
+                  <item.icon className="h-6 w-6 text-[#D4AF37]" />
+                </div>
+                <div className="text-sm font-bold text-[#3B82C6] mb-2">PASSO {item.num}</div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">{item.titulo}</h3>
+                <p className="text-sm text-slate-600">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="servicos" className="bg-gray-50 py-20">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center rounded-full border border-[#1A73E8]/20 bg-[#1A73E8]/10 px-5 py-2 text-xs font-bold uppercase tracking-[0.25em] text-[#1A73E8]">
-              O QUE FAZEMOS
-            </span>
-            <h2 className="mt-6 text-3xl font-black tracking-tight text-black sm:text-4xl">
-              Soluções digitais pensadas para crescer com menos ruído e mais controlo
+      {/* 3. SOBRE NÓS */}
+      <section id="sobre" className="px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="mx-auto max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-wide text-[#D4AF37]">Sobre Nós</p>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+              Quem Somos
             </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              Unimos tecnologia, automação e estratégia para transformar processos em vantagem competitiva.
+            <p className="mt-6 text-lg leading-8 text-slate-600">
+              A Magrinho Solutions é uma empresa de HR Tech focada em ajudar empresas a organizar, estruturar e modernizar os seus processos de Recursos Humanos através de métodos simples, claros e orientados a resultados.
+            </p>
+            
+            <div className="mt-10">
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Missão</h3>
+              <p className="text-lg leading-8 text-slate-600">
+                Transformar a forma como as empresas gerem pessoas através de processos simples, organizados e eficientes.
+              </p>
+            </div>
+
+            <div className="mt-8">
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Visão</h3>
+              <p className="text-lg leading-8 text-slate-600">
+                Ajudar a construir uma nova geração de empresas mais organizadas, eficientes e sustentáveis através da melhoria dos processos de Recursos Humanos.
+              </p>
+            </div>
+
+            <div className="mt-8">
+              <h3 className="text-xl font-bold text-slate-900 mb-4">Valores</h3>
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                {valores.map((valor) => (
+                  <div key={valor} className="bg-slate-50 p-3 rounded-lg border border-slate-200 text-center">
+                    <span className="text-sm font-medium text-slate-900">{valor}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. MÉTODO PONTE_MS™ - CARDS GRANDES */}
+      <section id="metodo" className="px-4 py-20 sm:px-6 lg:px-8 bg-slate-50">
+        <div className="mx-auto max-w-7xl">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-wide text-[#D4AF37]">Nosso Diferencial</p>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+              Método PONTE_MS™
+            </h2>
+          </div>
+          <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
+            {ponteSteps.map((step) => (
+              <div key={step.letra} className="bg-white p-8 rounded-xl border border-slate-200 text-center hover:shadow-lg transition-shadow">
+                <div className="text-5xl mb-4">{step.icon}</div>
+                <div className="text-3xl font-bold text-[#D4AF37] mb-3">{step.letra}</div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">{step.nome}</h3>
+                <p className="text-sm text-slate-600">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. DIAGNÓSTICO PONTE_MS™ */}
+      <section id="diagnostico" className="px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-3xl text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+              Diagnóstico PONTE_MS™
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-slate-600">
+              O Diagnóstico PONTE_MS™ é o serviço de entrada da Magrinho Solutions. O seu objetivo é identificar falhas, oportunidades de melhoria e o nível de maturidade dos processos de RH da empresa.
             </p>
           </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {services.map((service) => (
-              <div key={service.title} className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
-                <h3 className="text-xl font-black text-black">{service.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-gray-600">{service.description}</p>
+          <div className="grid lg:grid-cols-2 gap-8 mb-12">
+            <div className="bg-slate-50 p-8 rounded-xl border border-slate-200">
+              <h3 className="text-xl font-bold text-slate-900 mb-4">O que avaliamos</h3>
+              <ul className="space-y-3">
+                {["Estrutura de RH", "Gestão documental", "Processos internos", "Tecnologia utilizada", "Capacidade de crescimento"].map((item) => (
+                  <li key={item} className="flex items-center gap-3">
+                    <Check className="h-5 w-5 text-[#3B82C6] flex-shrink-0" />
+                    <span className="text-slate-700">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-gradient-to-br from-[#D4AF37]/5 to-[#B8941F]/5 p-8 rounded-xl border-2 border-[#D4AF37]">
+              <h3 className="text-xl font-bold text-slate-900 mb-4">O que recebe ao final do diagnóstico?</h3>
+              <ul className="space-y-3">
+                <li className="flex items-center gap-3">
+                  <Check className="h-5 w-5 text-[#D4AF37] flex-shrink-0" />
+                  <span className="text-slate-700 font-medium">Relatório completo</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="h-5 w-5 text-[#D4AF37] flex-shrink-0" />
+                  <span className="text-slate-700 font-medium">Pontuação de maturidade</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="h-5 w-5 text-[#D4AF37] flex-shrink-0" />
+                  <span className="text-slate-700 font-medium">Plano de ação</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="h-5 w-5 text-[#D4AF37] flex-shrink-0" />
+                  <span className="text-slate-700 font-medium">Recomendações prioritárias</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <Link href={whatsappLink} className="inline-flex items-center rounded-md bg-gradient-to-r from-[#D4AF37] to-[#B8941F] px-8 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:opacity-90">
+              Solicitar Diagnóstico PONTE_MS™ <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. SERVIÇOS - CARDS */}
+      <section id="servicos" className="px-4 py-20 sm:px-6 lg:px-8 bg-slate-50">
+        <div className="mx-auto max-w-7xl">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+              Serviços
+            </h2>
+          </div>
+          <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {servicos.map((servico) => (
+              <div key={servico.nome} className="bg-white p-8 rounded-xl border border-slate-200 hover:border-[#D4AF37] hover:shadow-lg transition-all">
+                <div className="w-12 h-12 bg-[#D4AF37]/10 rounded-lg flex items-center justify-center mb-4">
+                  <servico.icon className="h-6 w-6 text-[#D4AF37]" />
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">{servico.nome}</h3>
+                <p className="text-sm text-slate-600">{servico.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-            <div>
-              <span className="inline-flex items-center rounded-full border border-[#C5A85A]/20 bg-[#C5A85A]/10 px-5 py-2 text-xs font-bold uppercase tracking-[0.25em] text-[#C5A85A]">
-                COMO TRABALHAMOS
-              </span>
-              <h2 className="mt-6 text-3xl font-black tracking-tight text-black sm:text-4xl">
-                Um processo simples, direto e orientado a resultados
-              </h2>
-              <p className="mt-4 text-lg text-gray-600">
-                A nossa abordagem mistura estratégia, execução e acompanhamento contínuo para que cada solução faça diferença desde o primeiro dia.
-              </p>
-            </div>
-
-            <div className="grid gap-4 md:grid-cols-3">
-              {steps.map((step) => (
-                <div key={step.title} className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-                  <p className="text-sm font-black text-[#1A73E8]">{step.number}</p>
-                  <h3 className="mt-3 text-lg font-black text-black">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-7 text-gray-600">{step.description}</p>
+      {/* 7. PROVA DE AUTORIDADE - NOVA */}
+      <section id="autoridade" className="px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+              Por que escolher a Magrinho Solutions?
+            </h2>
+          </div>
+          <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {autoridade.map((item) => (
+              <div key={item.titulo} className="text-center">
+                <div className="mx-auto w-16 h-16 bg-[#3B82C6]/10 rounded-full flex items-center justify-center mb-4">
+                  <item.icon className="h-8 w-8 text-[#3B82C6]" />
                 </div>
-              ))}
-            </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">{item.titulo}</h3>
+                <p className="text-sm text-slate-600">{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section id="contacto" className="bg-black py-20 text-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-            <div>
-              <span className="inline-flex items-center rounded-full border border-[#C5A85A]/30 bg-[#C5A85A]/10 px-5 py-2 text-xs font-bold uppercase tracking-[0.25em] text-[#C5A85A]">
-                PRONTO PARA AVANÇAR?
-              </span>
-              <h2 className="mt-6 text-3xl font-black tracking-tight sm:text-4xl">
-                Vamos encontrar a melhor forma de modernizar o seu negócio
-              </h2>
-              <p className="mt-4 text-lg text-gray-300">
-                Envie uma mensagem e diga o que precisa melhorar. Respondemos com uma análise inicial e uma proposta clara.
-              </p>
-
-              <div className="mt-8 space-y-3 text-sm text-gray-300">
-                <p>Resposta rápida e objetiva</p>
-                <p>Sem compromisso inicial</p>
-                <p>Foco em soluções realmente úteis</p>
+      {/* 8. CONTACTOS */}
+      <section id="contactos" className="px-4 py-20 sm:px-6 lg:px-8 bg-slate-50">
+        <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-12">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-wide text-[#D4AF37]">Contactos</p>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-900">
+              Fale Connosco
+            </h2>
+            <div className="mt-8 space-y-4">
+              <Link href={whatsappLink} className="flex items-center gap-3 text-slate-900 hover:text-[#D4AF37]">
+                <span className="font-semibold">WhatsApp</span>
+              </Link>
+              <Link href="https://linkedin.com" className="flex items-center gap-3 text-slate-900 hover:text-[#D4AF37]">
+                <Linkedin className="h-5 w-5" />
+                <span className="font-semibold">LinkedIn</span>
+              </Link>
+              <div className="flex items-center gap-3">
+                <Mail className="h-5 w-5 text-slate-500" />
+                <span>magrinhosolutions@gmail.com</span>
               </div>
             </div>
-
-            <form className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur sm:p-8">
-              <div className="grid gap-4">
-                <input
-                  type="text"
-                  placeholder="O teu nome"
-                  className="w-full rounded-xl border border-gray-700 bg-transparent px-4 py-3 text-white placeholder:text-gray-400 focus:outline-none focus:border-[#1A73E8]"
-                />
-                <input
-                  type="email"
-                  placeholder="O teu email"
-                  className="w-full rounded-xl border border-gray-700 bg-transparent px-4 py-3 text-white placeholder:text-gray-400 focus:outline-none focus:border-[#1A73E8]"
-                />
-                <textarea
-                  placeholder="Descreve o teu problema ou necessidade"
-                  rows={5}
-                  className="w-full rounded-xl border border-gray-700 bg-transparent px-4 py-3 text-white placeholder:text-gray-400 focus:outline-none focus:border-[#1A73E8]"
-                />
-                <button
-                  type="submit"
-                  className="rounded-xl bg-[#C5A85A] px-8 py-4 text-base font-black text-black transition-all hover:bg-white"
-                >
-                  Enviar pedido
-                </button>
+          </div>
+          
+          <div className="bg-white p-8 rounded-xl border border-slate-200">
+            <h3 className="text-xl font-bold mb-6">Formulário</h3>
+            <form className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-slate-700">Nome</label>
+                <input type="text" className="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-[#D4AF37] focus:ring-[#D4AF37]" />
               </div>
+              <div>
+                <label className="block text-sm font-medium text-slate-700">Empresa</label>
+                <input type="text" className="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-[#D4AF37] focus:ring-[#D4AF37]" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-slate-700">Telefone</label>
+                <input type="tel" className="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-[#D4AF37] focus:ring-[#D4AF37]" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-slate-700">E-mail</label>
+                <input type="email" className="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-[#D4AF37] focus:ring-[#D4AF37]" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-slate-700">Mensagem</label>
+                <textarea rows={4} className="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-[#D4AF37] focus:ring-[#D4AF37]" />
+              </div>
+              <button type="submit" className="w-full rounded-md bg-[#3B82C6] px-6 py-3 text-sm font-semibold text-white hover:bg-[#2563EB]">
+                Enviar Mensagem
+              </button>
             </form>
           </div>
         </div>
       </section>
 
-      <footer className="bg-gray-950 py-10 text-white">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 md:flex-row md:items-center md:justify-between lg:px-8">
-          <p className="text-sm text-gray-400">
-            © {new Date().getFullYear()} Magrinho Solutions. Todos os direitos reservados.
-          </p>
-          <div className="flex flex-wrap gap-6 text-sm text-gray-400">
-            <a href="https://wa.me/244921131848" className="hover:text-[#C5A85A]" target="_blank" rel="noreferrer">
-              WhatsApp
-            </a>
-            <a href="#servicos" className="hover:text-[#C5A85A]">
-              Serviços
-            </a>
-            <a href="#contacto" className="hover:text-[#C5A85A]">
-              Contacto
-            </a>
+      {/* 9. FOOTER */}
+      <footer className="px-4 py-12 sm:px-6 lg:px-8 border-t">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+            <div>
+              <p className="font-bold text-lg">MAGRINHO SOLUTIONS</p>
+              <p className="mt-2 text-sm text-slate-600">
+                Transformamos processos de RH em sistemas eficientes.
+              </p>
+              <div className="mt-4 space-y-1 text-sm text-slate-600">
+                <p className="font-semibold text-[#D4AF37]">Método PONTE_MS™</p>
+                <p>Diagnóstico PONTE_MS™</p>
+                <p>Recepcionista Digital PONTE_MS™</p>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold text-slate-900">Links rápidos</h3>
+              <ul className="mt-4 space-y-2">
+                {navLinks.map((link) => (
+                  <li key={link.name}>
+                    <Link href={link.href} className="text-sm text-slate-600 hover:text-[#D4AF37]">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold text-slate-900">Redes sociais oficiais</h3>
+              <div className="mt-4 flex gap-4">
+                <Link href={whatsappLink} className="text-sm text-slate-600 hover:text-[#D4AF37]">WhatsApp</Link>
+                <Link href="https://linkedin.com" className="text-sm text-slate-600 hover:text-[#D4AF37]">LinkedIn</Link>
+                <Link href="mailto:magrinhosolutions@gmail.com" className="text-sm text-slate-600 hover:text-[#D4AF37]">E-mail</Link>
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 border-t border-slate-200 pt-8 text-center">
+            <p className="text-sm text-slate-500">© 2026 Magrinho Solutions. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
+
     </main>
-  );
+  )
 }
